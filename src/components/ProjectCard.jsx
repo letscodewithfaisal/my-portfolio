@@ -9,7 +9,7 @@ const ProjectCard = ({
 }) => {
   const openLink = (url) => {
     if (url && url !== "#") {
-      window.open(url, "_blank", "noopener,noreferrer");
+      window.location.assign(url);
     }
   };
 
@@ -17,6 +17,8 @@ const ProjectCard = ({
     <div
       onClick={() => openLink(demo)}
       onKeyDown={(e) => {
+        if (e.target !== e.currentTarget) return;
+
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           openLink(demo);
@@ -25,7 +27,7 @@ const ProjectCard = ({
       role="link"
       tabIndex={0}
       aria-label={`View live demo of ${title}`}
-      className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#1a1a24] transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/60 hover:shadow-xl hover:shadow-purple-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+      className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#1a1a24] transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/60 hover:shadow-xl hover:shadow-purple-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 touch-manipulation"
     >
       {/* Project Image */}
       <div className="overflow-hidden">
@@ -63,7 +65,7 @@ const ProjectCard = ({
         <div className="flex gap-3">
 
           <a
-            href={demo}
+            href={demo !== "#" ? demo : undefined}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -73,7 +75,7 @@ const ProjectCard = ({
           </a>
 
           <a
-            href={github}
+            href={github !== "#" ? github : undefined}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

@@ -63,15 +63,20 @@ const Hero = () => {
           {/* SKILLS */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-8">
             {skills.map((skill) => (
-              <motion.span
-                key={skill.name}
-                whileHover={{ scale: 1.06, y: -3 }}
-                transition={{ duration: 0.005 }}
-                className={`px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm font-medium cursor-default transition-colors duration-[5ms] ${skill.color}`}
-              >
-                {skill.name}
-              </motion.span>
-            ))}
+  <motion.span
+    key={skill.name}
+    whileHover={{ scale: 1.06, y: -3 }}
+    whileTap={{
+      scale: 1.08,
+      y: -3,
+      backgroundColor: "rgba(255, 255, 255, 0.12)",
+    }}
+    transition={{ duration: 0.15 }}
+    className={`px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm font-medium cursor-pointer transition-colors duration-200 ${skill.color}`}
+  >
+    {skill.name}
+  </motion.span>
+))}
           </div>
 
           {/* BUTTONS */}

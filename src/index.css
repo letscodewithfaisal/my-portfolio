@@ -258,3 +258,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ---------- Mobile Touch Improvements ---------- */
+
+@media (hover: none) {
+  .social-card:active {
+    transform: scale(0.98);
+  }
+
+  .hud-link:active {
+    color: #f472b6;
+  }
+}
