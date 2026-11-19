@@ -3,6 +3,8 @@
 
 @import "tailwindcss";
 
+/* ---------- Global Styles ---------- */
+
 * {
   font-family: Saira, sans-serif;
 }
@@ -12,20 +14,163 @@
   --color-dark-200: #1f1f1f;
   --color-dark-300: #2d2d2d;
   --color-dark-400: #3d3d3d;
+
   --color-purple: #8B5CF6;
   --color-pink: #EC4899;
   --color-blue: #3B82F6;
+
+  /* Space Theme Animations */
+  --animate-orbit: orbit 24s linear infinite;
+  --animate-orbit-reverse: orbit-reverse 24s linear infinite;
+  --animate-nebula: nebula 18s ease-in-out infinite;
+  --animate-shoot: shoot 9s linear infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
 }
 
-/* Typewriter Animation */
+/* ---------- Page Basics ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #05040b;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Section Scroll Offset */
+
+#about,
+#skills,
+#projects,
+#blog,
+#contact {
+  scroll-margin-top: 4.5rem;
+}
+
+/* ---------- Space Animations ---------- */
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes nebula {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, -30px) scale(1.12);
+  }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(0, 0) rotate(-29deg);
+    opacity: 0;
+  }
+
+  3% {
+    opacity: 1;
+  }
+
+  14% {
+    transform: translate(-420px, 235px) rotate(-29deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-420px, 235px) rotate(-29deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 0.95;
+  }
+}
+
+/* ---------- Navbar: HUD Corner Borders ---------- */
+
+.hud-link {
+  position: relative;
+  padding: 0.4rem 0.9rem;
+  color: rgb(255 255 255 / 0.8);
+  transition: color 0.3s ease;
+}
+
+.hud-link::before,
+.hud-link::after {
+  content: "";
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 2px solid #a78bfa;
+  opacity: 0.7;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.hud-link::before {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.hud-link::after {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.hud-link:hover,
+.hud-link[data-active="true"] {
+  color: #fff;
+}
+
+.hud-link:hover::before,
+.hud-link:hover::after,
+.hud-link[data-active="true"]::before,
+.hud-link[data-active="true"]::after {
+  width: 100%;
+  height: 100%;
+  border-color: #f472b6;
+  opacity: 1;
+}
+
+/* ---------- Typewriter Animation ---------- */
 
 .typewriter {
   overflow: hidden;
   border-right: 0.15em solid #3B82F6;
   white-space: nowrap;
   width: 0;
-  animation: typing 3s steps(20, end) forwards,
-             blink-caret 0.75s step-end 4;
+  animation:
+    typing 3s steps(20, end) forwards,
+    blink-caret 0.75s step-end 4;
 }
 
 @keyframes typing {
@@ -46,5 +191,70 @@
 
   50% {
     border-color: #8B5CF6;
+  }
+}
+
+/* ---------- Social Cards Hover Effects ---------- */
+
+.social-card {
+  position: relative;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+  border-color: var(--brand-color) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--brand-color) 10%,
+    transparent
+  ) !important;
+
+  box-shadow: 0 8px 30px color-mix(
+    in srgb,
+    var(--brand-color) 15%,
+    transparent
+  );
+}
+
+.social-card .social-icon {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+  background-color: var(--brand-color);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.social-card .social-title,
+.social-card .social-action {
+  transition: color 0.3s ease;
+}
+
+.social-card:hover .social-title,
+.social-card:hover .social-action {
+  color: var(--brand-color);
+}
+
+/* ---------- Accessibility: Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

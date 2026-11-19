@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { skills as skillCategories } from "../assets/assets";
 import { FaCode, FaLayerGroup, FaServer, FaTools } from "react-icons/fa";
@@ -14,11 +13,11 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-[#0b0b0f] px-6 py-24 text-white md:px-12"
+      className="relative overflow-hidden bg-transparent px-6 py-24 text-white md:px-12"
     >
       {/* Background Effects */}
-      <div className="pointer-events-none absolute left-0 top-20 h-72 w-72 rounded-full bg-purple-600/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-10 right-0 h-72 w-72 rounded-full bg-blue-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-0 top-20 size-72 rounded-full bg-purple-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-10 right-0 size-72 rounded-full bg-blue-600/10 blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
 
@@ -62,18 +61,18 @@ const Skills = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className={`group relative overflow-hidden rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/50 md:p-8 ${
                   category.featured
-                    ? "border-purple-500/40 bg-purple-500/[0.07]"
-                    : "border-white/10 bg-white/[0.03]"
+                    ? "border-purple-500/40 bg-purple-500/7"
+                    : "border-white/10 bg-white/3"
                 }`}
               >
                 {/* Card Glow */}
-                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-purple-500/10 blur-3xl transition-all duration-500 group-hover:bg-purple-500/20" />
+                <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-purple-500/10 blur-3xl transition-all duration-500 group-hover:bg-purple-500/20" />
 
                 <div className="relative z-10">
 
                   {/* Card Header */}
                   <div className="mb-6 flex items-start justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10 text-xl text-purple-400">
+                    <div className="flex size-12 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10 text-xl text-purple-400">
                       <Icon />
                     </div>
 

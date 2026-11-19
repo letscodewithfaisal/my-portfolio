@@ -1,16 +1,24 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import SpaceBackground from "./components/SpaceBackground";
 
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Navbar from './components/Navbar'
+
 const App = () => {
   return (
-    <div>
-      <Navbar />
-    <Routes>
-      <Route path='/' element={<Home />}/>
-    </Routes>
-      </div>
-  )
-}
+    <div className="relative min-h-screen text-white">
+      {/* One shared space background for every section (fixed, behind everything) */}
+      <SpaceBackground />
 
-export default App
+      <Navbar />
+
+      <div className="relative z-10">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </div>
+  );
+};
+
+export default App;

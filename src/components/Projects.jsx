@@ -13,7 +13,7 @@ const Projects = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
       id="projects"
-      className="bg-[#0b0b0f] px-6 py-20 text-white md:px-12"
+      className="bg-[#05040b]/40 px-6 py-20 text-white md:px-12"
     >
       <div className="mx-auto max-w-7xl">
 
